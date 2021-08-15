@@ -1,0 +1,14 @@
+.story {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 15px;
+    img {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+    }
+    span {
+        margin-top: 5px;
+    }
+}
