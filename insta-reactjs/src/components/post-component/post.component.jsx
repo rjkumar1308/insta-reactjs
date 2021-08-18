@@ -17,13 +17,13 @@ const calculateTime = seconds => {
 export const PostComponent = ({ post }) => (
     <div className="post">
         <div className="post-header">
-            <div className="left-content">
+            <div className="post-header-left-content">
                 <div className="module-border-wrap">
                     <img src={post.avatar} alt="Profile" />
                 </div>
                 <span>{post.user_name}</span>
             </div>
-            <div className="right-content">
+            <div className="post-header-right-content">
                 <ThreeDots />
             </div>
         </div>

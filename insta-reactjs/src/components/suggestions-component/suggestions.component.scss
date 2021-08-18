@@ -1,0 +1,15 @@
+.suggestions-heading {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    span {
+        color: #8e8e8e;
+        font-size: 14px;
+        font-weight: bold;
+    }
+    .see-all-link {
+        color: #262626;
+        font-size: 12px;
+        font-weight: 600;
+    }
+}

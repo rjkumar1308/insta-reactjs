@@ -3,9 +3,17 @@
         display: flex;
         width: 70%;
         margin: 0 auto;
+        margin-top: 54px;
 
         .left-content {
             width: 65%;
+        }
+
+        .right-content {
+            width: 20%;
+            margin-left: 50%;
+            margin-right: 15%;
+            position: fixed;
         }
     }
 }

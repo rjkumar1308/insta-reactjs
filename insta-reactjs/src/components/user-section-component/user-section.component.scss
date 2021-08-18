@@ -1,0 +1,36 @@
+.user-section {
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100px;
+    .left-user-section {
+        display: flex;
+        align-items: center;
+        img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        .user-name {
+            p {
+                padding-bottom: 3px;
+                font-weight: bold;
+                font-size: 14px;
+                color: #262626;
+            }
+            span {
+                color: #8e8e8e;
+                font-size: 14px;
+            }
+        }
+    }
+    .right-user-section {
+        .switch-button {
+            color: #0095f6;
+            font-size: 12px;
+            font-weight: 600;
+        }
+    }
+}

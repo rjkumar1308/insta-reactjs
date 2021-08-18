@@ -6,7 +6,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        .left-content {
+        .post-header-left-content {
             display: flex;
             align-items: center;
             .module-border-wrap {
@@ -101,6 +101,7 @@
                 border-radius: 2px;
                 padding: 5px;
                 border: none;
+                outline: none;
             }
             span {
                 text-align: right;
