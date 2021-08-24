@@ -1,3 +1,3 @@
 export const storiesTypes = {
-    updateStories: 'UPDATE_STORIES'
+    UPDATE_STORIES: 'UPDATE_STORIES'
 };

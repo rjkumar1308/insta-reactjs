@@ -1,11 +1,11 @@
 import './post.component.scss';
 
-import { ReactComponent as ThreeDots } from '../../assets/post/three-dots.svg';
-import { ReactComponent as Heart } from '../../assets/post/heart.svg';
-import { ReactComponent as Comment } from '../../assets/post/comment.svg';
-import { ReactComponent as Share } from '../../assets/post/share.svg';
-import { ReactComponent as Save } from '../../assets/post/save.svg';
-import { ReactComponent as Smile } from '../../assets/post/smile.svg';
+import { ReactComponent as ThreeDots } from '../../../assets/post/three-dots.svg';
+import { ReactComponent as Heart } from '../../../assets/post/heart.svg';
+import { ReactComponent as Comment } from '../../../assets/post/comment.svg';
+import { ReactComponent as Share } from '../../../assets/post/share.svg';
+import { ReactComponent as Save } from '../../../assets/post/save.svg';
+import { ReactComponent as Smile } from '../../../assets/post/smile.svg';
 
 const calculateTime = seconds => {
     if (seconds < 60) return parseInt(seconds) + " seconds ago";

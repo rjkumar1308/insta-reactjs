@@ -6,7 +6,7 @@ const INITIAL_STATE = {
 
 const storiesReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
-        case storiesTypes.updateStories:
+        case storiesTypes.UPDATE_STORIES:
             return { ...state, stories: action.payload }
         default:
             return state;

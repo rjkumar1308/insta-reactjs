@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchStories } from '../../redux/actions/stories-api-calls.actions';
+import { fetchStories } from '../../redux/actions/stories.actions';
 
 import { StoryComponent } from './story-component/story.component';
 
@@ -33,7 +33,7 @@ const mapDispatchToProps = dispatch => {
 };
 
 const mapStateToProps = state => ({
-    stories: state.stories.stories
+    stories: state.storiesReducer.stories
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(StoriesComponent);

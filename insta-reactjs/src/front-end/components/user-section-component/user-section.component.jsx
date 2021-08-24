@@ -1,33 +1,25 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
+import { fetchUserDetails } from '../../redux/actions/user.actions';
+
 import './user-section.component.scss';
 
-export default class UserSection extends React.Component {
-    constructor() {
-        super();
-        this.state = {
-            user: {}
-        };
-    }
-
+class UserSection extends React.Component {
     componentDidMount() {
-        this.setState({
-            user: {
-                user_name: 'rjkumar1308',
-                first_name: 'Rajat',
-                last_name: 'Kumar',
-                profile_image: 'https://reqres.in/img/faces/8-image.jpg'
-            }
-        });
+        const { fetchUserDetails } = this.props;
+        fetchUserDetails();
     }
 
     render() {
+        const { user_details } = this.props;
         return (
             <div className="user-section">
                 <div className="left-user-section">
-                    <img src={this.state.user.profile_image} alt="User Profile" />
+                    <img src={user_details.profile_image} alt="User Profile" />
                     <div className="user-name">
-                        <p>{this.state.user.user_name}</p>
-                        <span>{this.state.user.first_name + " " + this.state.user.last_name}</span>
+                        <p>{user_details.user_name}</p>
+                        <span>{user_details.first_name + " " + user_details.last_name}</span>
                     </div>
                 </div>
                 <div className="right-user-section">
@@ -36,4 +28,14 @@ export default class UserSection extends React.Component {
             </div>
         )
     }
-}
+};
+
+const mapDispatchToProps = dispatch => ({
+    fetchUserDetails: () => dispatch(fetchUserDetails())
+});
+
+const mapStateToProps = state => ({
+    user_details: state.userReducer.user.user_details
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserSection);
