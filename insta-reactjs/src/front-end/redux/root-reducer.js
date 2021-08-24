@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
 
-import storiesReducer from "./stories/stories.reducer";
+import storiesReducer from "./reducers/stories.reducer";
 
 const rootReducer = combineReducers({
     stories:storiesReducer

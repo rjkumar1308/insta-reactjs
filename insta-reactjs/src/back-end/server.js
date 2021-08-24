@@ -1,8 +1,11 @@
 const express = require('express');
+var cors = require('cors')
 const app = express();
 const port = 3200;
 
-app.get('/stories',(req, res)=>{
+app.use(cors())
+
+app.get('/getStories',(req, res)=>{
     res.send({
         status:200,
         message: 'success',
