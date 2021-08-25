@@ -20,16 +20,16 @@ export const updateUserSuggestion = payload => {
 
 export const fetchUserDetails = () => {
     return dispatch => {
-        httpGet(SERVER + 'getUserDetails').then(response => {
-            if (response && response.data && response.data.user)
-                dispatch(updateUserDetails(response.data.user));
+        httpGet(SERVER + 'user/getUserDetails').then(response => {
+            if (response && response.data && response.data.user_details)
+                dispatch(updateUserDetails(response.data.user_details));
         });
     };
 };
 
 export const fetchUserSuggestions = () => {
     return dispatch => {
-        httpGet(SERVER + 'getSuggestions').then(response => {
+        httpGet(SERVER + 'user/getSuggestions').then(response => {
             if (response && response.data && response.data.suggestions_list)
                 dispatch(updateUserSuggestion(response.data.suggestions_list));
         });

@@ -14,7 +14,7 @@ export const updateStories = payload => {
 
 export const fetchStories = () => {
     return dispatch => {
-        httpGet(SERVER + 'getStories').then(response => {
+        httpGet(SERVER + 'stories/getStories').then(response => {
             if (response && response.data && response.data.stories)
                 dispatch(updateStories(response.data.stories));
         });

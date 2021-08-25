@@ -13,7 +13,7 @@ export const updatePosts = payload => {
 
 export const fetchPosts = () => {
     return dispatch => {
-        httpGet(SERVER + 'getPosts').then(response => {
+        httpGet(SERVER + 'posts/getPosts').then(response => {
             if (response && response.data && response.data.posts)
                 dispatch(updatePosts(response.data.posts));
         });
