@@ -10,15 +10,17 @@ export default class HeaderComponent extends React.Component {
 
     render() {
         return (
-            <div className="header">
-                <div className="header-logo">
-                    <img src={logo} alt="header-logo" />
-                </div>
-                <div className="header-search-bar">
-                    <SearchBarComponent />
-                </div>
-                <div className="header-right-logos">
-                    <RightLogosComponents />
+            <div className="header-container">
+                <div className="header">
+                    <div className="header-logo">
+                        <img src={logo} alt="header-logo" />
+                    </div>
+                    <div className="header-search-bar">
+                        <SearchBarComponent />
+                    </div>
+                    <div className="header-right-logos">
+                        <RightLogosComponents />
+                    </div>
                 </div>
             </div>
         )
