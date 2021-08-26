@@ -22,7 +22,7 @@ class SuggestionsComponent extends React.Component {
                 </div>
                 <div className="suggestion-tiles">
                     {
-                        user_suggestions.map(suggestion => <SuggestionTileComponent suggestion={suggestion} key={suggestion.id} />)
+                        user_suggestions.map(suggestion => <SuggestionTileComponent suggestion={suggestion} key={suggestion._id} />)
                     }
                 </div>
             </div>

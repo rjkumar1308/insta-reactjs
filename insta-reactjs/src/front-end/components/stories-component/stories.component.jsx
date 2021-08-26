@@ -18,7 +18,7 @@ class StoriesComponent extends React.Component {
             <div className="stories-box">
                 {
                     stories && stories.length && stories.map(story => (
-                        <StoryComponent story={story} key={story.id} />
+                        <StoryComponent story={story} key={story._id} />
                     ))
                 }
             </div>

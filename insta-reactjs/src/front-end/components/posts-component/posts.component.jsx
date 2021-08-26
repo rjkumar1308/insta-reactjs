@@ -17,7 +17,7 @@ class PostsComponent extends React.Component {
         return (
             <div className="posts">
                 {
-                    posts.map(post => <PostComponent post={post} key={post.id} />)
+                    posts.map(post => <PostComponent post={post} key={post._id} />)
                 }
             </div>
         )

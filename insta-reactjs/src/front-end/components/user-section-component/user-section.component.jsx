@@ -5,7 +5,7 @@ import { fetchUserDetails } from '../../redux/actions/user.actions';
 
 import './user-section.component.scss';
 
-class UserSection extends React.Component {
+class UserSectionComponent extends React.Component {
     componentDidMount() {
         const { fetchUserDetails } = this.props;
         fetchUserDetails();
@@ -38,4 +38,4 @@ const mapStateToProps = state => ({
     user_details: state.userReducer.user.user_details
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserSection);
+export default connect(mapStateToProps, mapDispatchToProps)(UserSectionComponent);
