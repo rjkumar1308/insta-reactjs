@@ -21,8 +21,8 @@ export const updateUserSuggestion = payload => {
 export const fetchUserDetails = () => {
     return dispatch => {
         httpGet(SERVER + 'user/getUserDetails').then(response => {
-            if (response && response.data && response.data.user_details)
-                dispatch(updateUserDetails(response.data.user_details));
+            if (response && response.user_details)
+                dispatch(updateUserDetails(response.user_details));
         });
     };
 };
@@ -30,8 +30,8 @@ export const fetchUserDetails = () => {
 export const fetchUserSuggestions = () => {
     return dispatch => {
         httpGet(SERVER + 'user/getSuggestions').then(response => {
-            if (response && response.data && response.data.suggestions_list)
-                dispatch(updateUserSuggestion(response.data.suggestions_list));
+            if (response && response.suggestions_list)
+                dispatch(updateUserSuggestion(response.suggestions_list));
         });
     };
 };

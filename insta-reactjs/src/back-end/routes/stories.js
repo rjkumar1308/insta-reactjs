@@ -3,19 +3,12 @@ const Stories = require('../models/stories');
 
 router.get('/getStories', (req, res) => {
     Stories.find({}, (error, stories) => {
-        if(error){
-            return res.send({
-                status: 500,
+        if (error) {
+            return res.status(500).send({
                 message: '500 - Internal Server Error.'
             });
         }
-        return res.send({
-            status:200,
-            message: 'success',
-            data:{
-                stories: stories
-            }
-        });
+        return res.send({ stories });
     });
 });
 

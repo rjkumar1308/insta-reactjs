@@ -5,18 +5,11 @@ router.get('/getPosts', (req, res) => {
     Posts.find({}, (error, posts) => {
         if (error) {
             console.log("Error while fetching data => ", error);
-            return res.send({
-                status: 500,
+            return res.status(500).send({
                 message: '500 - Internal Server Error.'
             });
         }
-        return res.send({
-            status: 200,
-            message: 'success',
-            data:{
-                posts: posts
-            }
-        });
+        return res.send({ posts });
     });
 });
 
