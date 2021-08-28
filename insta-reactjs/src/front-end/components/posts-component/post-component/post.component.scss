@@ -1,14 +1,17 @@
 .post {
     border: 1px solid lightgray;
     border-radius: 2px;
+    background: #fff;
     .post-header {
         margin: 10px;
         display: flex;
         justify-content: space-between;
         align-items: center;
+        background: inherit;
         .post-header-left-content {
             display: flex;
             align-items: center;
+            background: inherit;
             .module-border-wrap {
                 position: relative;
                 background: linear-gradient(to right, orange, deeppink);
@@ -30,45 +33,73 @@
                 font-weight: bold;
                 font-size: 14px;
                 color: #262626;
+                background: inherit;
+            }
+        }
+        .post-header-right-content {
+            background: inherit;
+            svg {
+                background: inherit;
             }
         }
     }
     .post-image {
+        background: inherit;
         img {
             width: 100%;
+            background: inherit;
         }
     }
     .post-bottom-content {
+        background: inherit;
         .buttons-content {
             display: flex;
             justify-content: space-between;
             padding: 10px;
+            background: inherit;
             .left-icons {
+                background: inherit;
                 svg {
                     margin-right: 15px;
+                    background: inherit;
+                }
+            }
+            .right-icon {
+                background: inherit;
+                svg {
+                    background: inherit;
                 }
             }
         }
         .no-of-likes {
             padding: 0 10px 5px 10px;
+            background: inherit;
             span {
                 color: #262626;
                 font-size: 14px;
                 font-weight: bold;
+                background: inherit;
             }
         }
         .caption {
             padding: 0 10px 5px 10px;
+            background: inherit;
             span {
                 color: #262626;
                 font-size: 14px;
+                background: inherit;
+                strong{
+                    background: inherit;
+                }
             }
         }
         .view-all-comments {
             padding: 0 10px 5px 10px;
+            background: inherit;
             span {
                 color: #8e8e8e;
                 font-size: 14px;
+                background: inherit;
             }
         }
         .top-comments {
@@ -76,8 +107,13 @@
             display: flex;
             flex-direction: column;
             font-size: 14px;
+            background: inherit;
             span {
                 padding-bottom: 7px;
+                background: inherit;
+                strong {
+                    background: inherit;
+                }
             }
         }
         .post-time {
@@ -85,16 +121,22 @@
             font-size: 10px;
             padding: 0 10px 5px 10px;
             text-transform: uppercase;
+            background: inherit;
         }
         .add-comment-section {
             padding: 10px;
             border-top: 1px solid lightgray;
             display: flex;
-            .emoji{
+            background: inherit;
+            .emoji {
                 width: 8%;
                 display: flex;
                 justify-content: flex-start;
                 align-items: center;
+                background: inherit;
+                svg {
+                    background: inherit;
+                }
             }
             input {
                 width: 67%;
@@ -110,6 +152,7 @@
                 color: #0095f6;
                 font-size: 14px;
                 font-weight: 600;
+                background: inherit;
             }
         }
     }

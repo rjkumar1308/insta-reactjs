@@ -1,12 +1,18 @@
 .right-logos{
     display: flex;
-
+    background: inherit;
     div {
         margin: 0 12px;
+        background: inherit;
+        svg {
+            background: inherit;
+        }
     }
     .profile-image{
+        background: inherit;
         img{
             width: 20px;
+            background: inherit;
         }
     }
 }

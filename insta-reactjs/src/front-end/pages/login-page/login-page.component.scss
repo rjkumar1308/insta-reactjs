@@ -1,0 +1,74 @@
+.login-wrapper {
+    width: 350px;
+    margin: 36px auto;
+    .login-box {
+        border: 1px solid lightgrey;
+        padding: 26px 40px;
+        background: #fff;
+        .logo-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: inherit;
+            img {
+                width: 65%;
+                margin-bottom: 26px;
+                background: inherit;
+            }
+        }
+        div {
+            background: inherit;
+        }
+        .login-with-fb-section {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            div {
+                color: #385185;
+                margin: 10px auto;
+                font-weight: bold;
+                font-size: 14px;
+            }
+            span {
+                color: #00376b;
+                font-size: 12px;
+                margin-top: 10px;
+            }
+        }
+    }
+    .sign-up-box {
+        @extend .login-box;
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+        p {
+            font-size: 14px;
+            color: #262626;
+            span {
+                color: #0095f6;
+                padding-left: 5px;
+                font-weight: bold;
+            }
+        }
+    }
+    .get-app-box {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        p {
+            color: #262626;
+            font-size: 14px;
+            margin: 15px;
+        }
+        .links {
+            display: flex;
+            justify-content: center;
+            img{
+                width: 38%;
+                margin: 5px;
+            }
+        }
+    }
+}

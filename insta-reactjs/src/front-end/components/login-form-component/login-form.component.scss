@@ -1,0 +1,72 @@
+.login-form-wrapper {
+    .username-section,
+    .password-section {
+        position: relative;
+        input {
+            padding: 8px;
+            padding-top: 14px;
+            border: 1px solid lightgray;
+            border-radius: 2px;
+            width: 100%;
+            box-sizing: border-box;
+            margin-bottom: 5px;
+            &:valid ~ .label-top {
+                top: 25%;
+                font-size: 10px;
+            }
+        }
+        .label-top {
+            position: absolute;
+            top: 50%;
+            left: 3.6%;
+            font-size: 12px;
+            color: #8e8e8e;
+            transform: translateY(-50%);
+            transition: 0.2s ease all;
+            pointer-events: none;
+        }
+    }
+    .login-button-section {
+        width: 100%;
+        margin: 10px 0;
+        .login-button {
+            background-color: #0095f6;
+            padding: 7px 0;
+            width: 100%;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            span {
+                color: #fff;
+                font-size: 14px;
+                font-weight: bold;
+                background: none;
+            }
+        }
+        .disabled {
+            opacity: 0.5;
+            pointer-events: none;
+        }
+    }
+    .or-section{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 18px 0;
+        div{
+            display: inline-block;
+        }
+        .middle-line{
+            background: #8e8e8e;
+            width: 40%;
+            height: 0.1px;
+            opacity: 0.5;
+        }
+        .or-text {
+            font-size: 13px;
+            color: #8e8e8e;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+    }
+}
