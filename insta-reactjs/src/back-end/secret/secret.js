@@ -1,0 +1,2 @@
+const accessTokenSecret = "zZ2GggFH5dQ6d9ts6JiIDXiLasZF/aiWQ6y8CCb2CmkP12c1D74ajhl+JOj4x5uawIEfmjmS+/jN2U44j3ddUfUzSZCz01ga2nZV8cfFvXZTQ3vYzq+U9D7EZVZzoUsndkULCM36LRHwBtmsy/b3fataETB4AhGOK7pN7s7YFJT8ON5fW24zgGsmK8jP6Sz2z3N2SjmF+d4gEnrSSPg0A+LUQ2NEhdA9l4oBEcJzd2oqDDAp6JTuKQAPrS4paq3a5rusywk1/4SA+LPNflIZqg/qYH6TEK6Dx+V9M5FISlZ2F4Wqbv5V3aenXYPmR3bcWPYPP3t+NVfFxPYKuvXGxQ==";
+module.exports = accessTokenSecret;

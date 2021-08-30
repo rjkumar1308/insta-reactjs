@@ -1,5 +1,5 @@
 import { SERVER } from "../../const/const";
-import { httpGet } from "../../utils/http.utils";
+import { httpGet, httpPost } from "../../utils/http.utils";
 import { userTypes } from "../types/user.types";
 
 export const updateUserDetails = payload => {
@@ -13,6 +13,26 @@ export const updateUserSuggestion = payload => {
     return {
         payload: payload,
         type: userTypes.UPDATE_USER_SUGGESTION
+    };
+};
+
+export const updateIsLoggedIn = payload => {
+    return {
+        payload: payload,
+        type: userTypes.UPDATE_USER_IS_LOGGED_IN
+    }
+}
+
+export const updateLoginError = payload => {
+    return {
+        payload: payload,
+        type: userTypes.UPDATE_USER_LOGIN_ERROR
+    }
+}
+
+export const logoutUser = () => {
+    return dispatch => {
+        dispatch(updateIsLoggedIn(false));
     };
 };
 
@@ -32,6 +52,21 @@ export const fetchUserSuggestions = () => {
         httpGet(SERVER + 'user/getSuggestions').then(response => {
             if (response && response.suggestions_list)
                 dispatch(updateUserSuggestion(response.suggestions_list));
+        });
+    };
+};
+
+export const loginUser = (username, password) => {
+    return dispatch => {
+        httpPost(SERVER + 'user/login', { username, password }).then(response => {
+            if (response && response.accessToken) {
+                localStorage.setItem('accessToken', response.accessToken);
+                dispatch(updateIsLoggedIn(true));
+                dispatch(updateLoginError(''));
+            }
+            if (response && response.errorMessage) {
+                dispatch(updateLoginError(response.errorMessage));
+            }
         });
     };
 };

@@ -1,5 +1,9 @@
 import React from 'react';
+import { Redirect } from 'react-router';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+
+import { loginUser } from '../../redux/actions/user.actions';
 
 import './login-form.component.scss';
 
@@ -7,58 +11,82 @@ class LoginFromComponent extends React.Component {
     constructor() {
         super();
         this.state = {
-            isValidEmail: false,
-            isValidPassword: false
+            isValidUserName: false,
+            isValidPassword: false,
+            username: '',
+            password: ''
         };
     };
 
+    componentDidMount() {
+        const { isLoggedIn } = this.props;
+        if (isLoggedIn) {
+            this.props.history.push('/');
+        }
+    }
+
     hanldeChange = (e, from) => {
         if (from === 'username') {
-            const validEmailPattern = new RegExp('^[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]$');
             this.setState({
-                isValidEmail : validEmailPattern.test(e.target.value)
+                isValidUserName: e.target.value.length > 4,
+                username: e.target.value
             });
         }
         if (from === 'password') {
             const validPasswordPattern = new RegExp('^(?=.*?[A-Za-z])(?=.*?[0-9]).{6,}$');
             this.setState({
-                isValidPassword : validPasswordPattern.test(e.target.value)
+                isValidPassword: validPasswordPattern.test(e.target.value),
+                password: e.target.value
             });
         }
     }
 
+    handleLogin = () => {
+        const { username, password } = this.state;
+        const { loginUser } = this.props;
+        loginUser(username, password);
+    }
+
     render() {
-        const { isValidEmail, isValidPassword } = this.state;
-        const isValid =  isValidEmail && isValidPassword;
+        const { isValidUserName, isValidPassword, username, password } = this.state;
+        const isValid = isValidUserName && isValidPassword;
+        const { loginError, isLoggedIn } = this.props;
+        if (isLoggedIn) {
+            return <Redirect to='/' />
+        }
         return (
-            <form className="login-form-wrapper">
+            <div className="login-form-wrapper">
                 <div className="username-section">
-                    <input type="text" className="username-input" onChange={e => this.hanldeChange(e, 'username')} required />
+                    <input type="text" className="username-input" value={username} onChange={e => this.hanldeChange(e, 'username')} required />
                     <span className='label-top'>Phone number, username or email</span>
                 </div>
                 <div className="password-section">
-                    <input type="password" className="password-input" onChange={e => this.hanldeChange(e, 'password')} required />
+                    <input type="password" className="password-input" value={password} onChange={e => this.hanldeChange(e, 'password')} required />
                     <span className='label-top'>Password</span>
                 </div>
+                <div className={"error-section" + (loginError ? ' hidden' : '')}>
+                    <span>{loginError}</span>
+                </div>
                 <div className="login-button-section">
-                    <button type="submit" className={"login-button" + (isValid ? '' : ' disabled')} disabled={!isValid}><span>Log In</span></button>
+                    <button className={"login-button" + (isValid ? '' : ' disabled')} disabled={!isValid} onClick={this.handleLogin}><span>Log In</span></button>
                 </div>
                 <div className="or-section">
                     <div className="middle-line"></div>
                     <div className="or-text"><span>or</span></div>
                     <div className="middle-line"></div>
                 </div>
-            </form>
+            </div>
         );
     };
 };
 
 const mapStateToProps = state => ({
-
+    isLoggedIn: state.userReducer.user.isLoggedIn,
+    loginError: state.userReducer.user.loginError
 });
 
 const mapDispatchToProps = dispatch => ({
-
+    loginUser: (username, password) => dispatch(loginUser(username, password))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginFromComponent);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(LoginFromComponent));

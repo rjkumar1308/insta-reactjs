@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import HeaderComponent from '../../components/header-component/header.component';
 import StoriesComponent from '../../components/stories-component/stories.component';
@@ -7,9 +8,21 @@ import UserSectionComponent from '../../components/user-section-component/user-s
 import SuggestionsComponent from '../../components/suggestions-component/suggestions.component';
 
 import './home-page.component.scss';
+import { Redirect } from 'react-router-dom';
 
-export default class HomePageComponent extends React.Component {
+class HomePageComponent extends React.Component {
+    componentDidMount() {
+        const { isLoggedIn } = this.props;
+        if (!isLoggedIn) {
+            this.props.history.push('/accounts/login');
+        }
+    };
+
     render() {
+        const { isLoggedIn } = this.props;
+        if (!isLoggedIn) {
+            return <Redirect to='/accounts/login' />
+        }
         return (
             <div className="home-page">
                 <HeaderComponent />
@@ -29,4 +42,10 @@ export default class HomePageComponent extends React.Component {
         );
     };
 };
+
+const mapStateToProps = state => ({
+    isLoggedIn: state.userReducer.user.isLoggedIn
+});
+
+export default connect(mapStateToProps)(HomePageComponent);
 

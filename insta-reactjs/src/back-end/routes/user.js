@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const User = require('../models/user').User;
 const Suggestions = require('../models/user').Suggestions;
+const signJwtToken = require('../auth/auth').signJwtToken;
 
 router.get('/getUserDetails', (req, res) => {
     User.find({}, (error, user) => {
@@ -27,5 +28,7 @@ router.get('/getSuggestions', (req, res) => {
         });
     });
 });
+
+router.post('/login', signJwtToken);
 
 module.exports = router;

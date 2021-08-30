@@ -5,7 +5,9 @@ const userSchema = mongoose.Schema({
     "user_name": String,
     "first_name": String,
     "last_name": String,
-    "profile_image": String
+    "profile_image": String,
+    "password": String,
+    "role": String
 });
 
 const suggerstionSchema = mongoose.Schema({
