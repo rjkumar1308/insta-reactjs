@@ -1,5 +1,5 @@
 import { SERVER } from "../../const/const";
-import { httpGet } from "../../utils/http.utils";
+import { httpGet, getHeader } from "../../utils/http.utils";
 import { postsTypes } from "../types/posts.types";
 
 export const updatePosts = payload => {
@@ -13,7 +13,7 @@ export const updatePosts = payload => {
 
 export const fetchPosts = () => {
     return dispatch => {
-        httpGet(SERVER + 'posts/getPosts').then(response => {
+        httpGet(SERVER + 'posts/getPosts', getHeader()).then(response => {
             if (response && response.posts)
                 dispatch(updatePosts(response.posts));
         });

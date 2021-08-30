@@ -1,5 +1,5 @@
 import { SERVER } from "../../const/const";
-import { httpGet, httpPost } from "../../utils/http.utils";
+import { getHeader, httpGet, httpPost } from "../../utils/http.utils";
 import { userTypes } from "../types/user.types";
 
 export const updateUserDetails = payload => {
@@ -33,6 +33,7 @@ export const updateLoginError = payload => {
 export const logoutUser = () => {
     return dispatch => {
         dispatch(updateIsLoggedIn(false));
+        localStorage.removeItem('accessToken');
     };
 };
 
@@ -40,7 +41,7 @@ export const logoutUser = () => {
 
 export const fetchUserDetails = () => {
     return dispatch => {
-        httpGet(SERVER + 'user/getUserDetails').then(response => {
+        httpGet(SERVER + 'user/getUserDetails', getHeader()).then(response => {
             if (response && response.user_details)
                 dispatch(updateUserDetails(response.user_details));
         });
@@ -49,7 +50,7 @@ export const fetchUserDetails = () => {
 
 export const fetchUserSuggestions = () => {
     return dispatch => {
-        httpGet(SERVER + 'user/getSuggestions').then(response => {
+        httpGet(SERVER + 'user/getSuggestions', getHeader()).then(response => {
             if (response && response.suggestions_list)
                 dispatch(updateUserSuggestion(response.suggestions_list));
         });
@@ -66,6 +67,20 @@ export const loginUser = (username, password) => {
             }
             if (response && response.errorMessage) {
                 dispatch(updateLoginError(response.errorMessage));
+            }
+        });
+    };
+};
+
+export const verifyLogin = () => {
+    return dispatch => {
+        httpGet(SERVER + 'user/verify', getHeader()).then(response => {
+            if (response && response.success) {
+                dispatch(updateIsLoggedIn(true));
+            }
+            else {
+                dispatch(updateIsLoggedIn(false));
+                localStorage.removeItem('accessToken');
             }
         });
     };

@@ -15,7 +15,7 @@ const signJwtToken = (req, res) => {
                 errorMessage: 'Incorrect username or password'
             });
         }
-        const accessToken = jwt.sign({ username: response.user_name, role: response.role }, accessTokenSecret);
+        const accessToken = jwt.sign({ id: response[0]._id, role: response[0].role }, accessTokenSecret, { expiresIn: '10m' });
         res.send({ accessToken });
     });
 };
@@ -23,14 +23,16 @@ const signJwtToken = (req, res) => {
 const authenticateJwt = (req, res, next) => {
     const authHeader = req.headers.authorization;
     if (!authHeader) {
-        res.sendStatus(401);
+        return res.sendStatus(401);
     }
-    const token = authHeader.split('')[1];
+    const token = authHeader.split(' ')[1];
     jwt.verify(token, accessTokenSecret, (err, user) => {
         if (err) {
-            res.sendStatus(403);
+            console.log("error verifying jwt ==>",err)
+            return res.sendStatus(403);
         }
-        next(user);
+        req.user = user;
+        next();
     });
 };
 

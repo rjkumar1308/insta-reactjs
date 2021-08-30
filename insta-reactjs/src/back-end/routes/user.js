@@ -2,8 +2,9 @@ const router = require('express').Router();
 const User = require('../models/user').User;
 const Suggestions = require('../models/user').Suggestions;
 const signJwtToken = require('../auth/auth').signJwtToken;
+const authenticateJwt = require('../auth/auth').authenticateJwt;
 
-router.get('/getUserDetails', (req, res) => {
+router.get('/getUserDetails', authenticateJwt, (req, res) => {
     User.find({}, (error, user) => {
         if (error) {
             return res.status(500).send({
@@ -16,7 +17,7 @@ router.get('/getUserDetails', (req, res) => {
     });
 });
 
-router.get('/getSuggestions', (req, res) => {
+router.get('/getSuggestions', authenticateJwt, (req, res) => {
     Suggestions.find({}, (error, suggestions) => {
         if (error) {
             return res.status(500).send({
@@ -30,5 +31,11 @@ router.get('/getSuggestions', (req, res) => {
 });
 
 router.post('/login', signJwtToken);
+
+router.get('/verify', authenticateJwt, (req, res)=>{
+    res.send({
+        success:true
+    });
+});
 
 module.exports = router;

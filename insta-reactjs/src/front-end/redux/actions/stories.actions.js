@@ -1,5 +1,5 @@
 import { SERVER } from '../../const/const';
-import { httpGet } from '../../utils/http.utils';
+import { getHeader, httpGet } from '../../utils/http.utils';
 import { storiesTypes } from "../types/stories.types"
 
 export const updateStories = payload => {
@@ -14,7 +14,7 @@ export const updateStories = payload => {
 
 export const fetchStories = () => {
     return dispatch => {
-        httpGet(SERVER + 'stories/getStories').then(response => {
+        httpGet(SERVER + 'stories/getStories', getHeader()).then(response => {
             if (response && response.stories)
                 dispatch(updateStories(response.stories));
         });

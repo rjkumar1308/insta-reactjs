@@ -1,5 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
+
+import { verifyLogin } from '../../redux/actions/user.actions';
 
 import HeaderComponent from '../../components/header-component/header.component';
 import StoriesComponent from '../../components/stories-component/stories.component';
@@ -8,15 +11,19 @@ import UserSectionComponent from '../../components/user-section-component/user-s
 import SuggestionsComponent from '../../components/suggestions-component/suggestions.component';
 
 import './home-page.component.scss';
-import { Redirect } from 'react-router-dom';
 
 class HomePageComponent extends React.Component {
     componentDidMount() {
+        const { dispatchVerifyLogin } = this.props;
+        dispatchVerifyLogin();
+    };
+
+    componentDidUpdate() {
         const { isLoggedIn } = this.props;
         if (!isLoggedIn) {
             this.props.history.push('/accounts/login');
         }
-    };
+    }
 
     render() {
         const { isLoggedIn } = this.props;
@@ -47,5 +54,9 @@ const mapStateToProps = state => ({
     isLoggedIn: state.userReducer.user.isLoggedIn
 });
 
-export default connect(mapStateToProps)(HomePageComponent);
+const mapDispatchToProps = dispatch => ({
+    dispatchVerifyLogin : () => dispatch(verifyLogin())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomePageComponent);
 

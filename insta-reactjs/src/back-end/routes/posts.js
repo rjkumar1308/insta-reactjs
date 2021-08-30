@@ -1,7 +1,8 @@
 const router = require('express').Router();
 const Posts = require('../models/posts');
+const authenticateJwt = require('../auth/auth').authenticateJwt;
 
-router.get('/getPosts', (req, res) => {
+router.get('/getPosts', authenticateJwt, (req, res) => {
     Posts.find({}, (error, posts) => {
         if (error) {
             console.log("Error while fetching data => ", error);
