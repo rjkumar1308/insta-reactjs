@@ -1,9 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import LoginFormComponent from '../../components/login-form-component/login-form.component';
+import { GetAppComponent } from '../../components/get-app-component/get-app.component';
 import logo from '../../assets/logo.png';
-import apple from '../../assets/apple-link.png';
-import google from '../../assets/google-link.png';
 
 import './login-page.component.scss';
 
@@ -24,14 +24,10 @@ export default class LoginPageComponent extends React.Component {
                     </div>
                 </div>
                 <div className="sign-up-box">
-                    <p>Don't have an account?<span>Sign up</span></p>
+                    <p>Don't have an account?<Link to='/accounts/signup'><span>Sign up</span></Link></p>
                 </div>
-                <div className="get-app-box">
-                    <p>Get the app</p>
-                    <div className="links">
-                        <img src={apple} alt="Link to Apple" title="Link to Apple" />
-                        <img src={google} alt="Link to Google" title="Link to Google" />
-                    </div>
+                <div>
+                    <GetAppComponent />
                 </div>
             </div>
         );

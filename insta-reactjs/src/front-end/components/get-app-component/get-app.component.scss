@@ -1,0 +1,19 @@
+.get-app-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    p {
+        color: #262626;
+        font-size: 14px;
+        margin: 15px;
+    }
+    .links {
+        display: flex;
+        justify-content: center;
+        img{
+            width: 38%;
+            margin: 5px;
+        }
+    }
+}

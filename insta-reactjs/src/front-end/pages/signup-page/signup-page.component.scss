@@ -1,0 +1,99 @@
+.login-wrapper {
+    width: 350px;
+    margin: 36px auto;
+    position: relative;
+    .login-box {
+        border: 1px solid lightgrey;
+        padding: 26px 40px;
+        background: #fff;
+        .logo-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: inherit;
+            img {
+                width: 65%;
+                margin-bottom: 16px;
+                background: inherit;
+            }
+        }
+        .signup-text {
+            color: #8e8e8e;
+            font-size: 17px;
+            font-weight: bold;
+            text-align: center;
+        }
+        div {
+            background: inherit;
+        }
+        .login-with-fb-section {
+            .fb-button{
+                background-color: #0095f6;
+                border-radius: 4px;
+                padding: 7px 12px;
+                width: 100%;
+                border: none;
+                margin-top: 12px;
+                font-size: 15px;
+                font-weight: bold;
+                color: #fff;
+                cursor: pointer;
+            }
+        }
+    }
+    .sign-up-box {
+        @extend .login-box;
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+        p {
+            font-size: 14px;
+            color: #262626;
+            span {
+                color: #0095f6;
+                padding-left: 5px;
+                font-weight: bold;
+            }
+        }
+    }
+    .overlay-section {
+        position: absolute;
+        width: 130%;
+        height: 100%;
+        top: -10%;
+        left: -15%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: none !important;
+        z-index: 1;
+        .overlay {
+            width: 350px;
+            padding: 35px 40px;
+            z-index: 1;
+            border: 1px solid lightgray;
+            border-radius: 5px;
+            background: #fff;
+            p {
+                color: #8e8e8e;
+                font-size: 17px;
+                font-weight: bold;
+                text-align: center;
+                background: #fff;
+            }
+            .continue-button {
+                width: 50%;
+                display: block;
+                margin: auto;
+                margin-top: 20px;
+                background: #0095f6;
+                color: #fff;
+                padding: 7px;
+                border-radius: 3px;
+                border: none;
+                font-weight: bold;
+                cursor: pointer;
+            }
+        }
+    }
+}

@@ -23,6 +23,13 @@ export const updateIsLoggedIn = payload => {
     }
 }
 
+export const updateSignupSuccess = payload => {
+    return {
+        payload: payload,
+        type: userTypes.UPDATE_SIGNUP_SUCCESS
+    }
+}
+
 export const updateLoginError = payload => {
     return {
         payload: payload,
@@ -34,6 +41,12 @@ export const logoutUser = () => {
     return dispatch => {
         dispatch(updateIsLoggedIn(false));
         localStorage.removeItem('accessToken');
+    };
+};
+
+export const changeSignupSuccess = (value = false) => {
+    return dispatch => {
+        dispatch(updateSignupSuccess(value));
     };
 };
 
@@ -84,4 +97,53 @@ export const verifyLogin = () => {
             }
         });
     };
+};
+
+export const signupUser = (username, password, mobile, full_name) => {
+    return dispatch => {
+        const body = {
+            username,
+            password,
+            full_name,
+            role: 'user'
+        }
+        if (new RegExp('[0-9]{10}').test(mobile)) {
+            body.mobile = mobile;
+        }
+        else {
+            body.email = mobile;
+        }
+        httpPost(SERVER + 'user/signup', body).then(response => {
+            if (response && response.success) {
+                dispatch(updateSignupSuccess(true));
+            }
+        });
+    };
+};
+
+export const checkUserNameOrEmailExists = (value, type) => {
+    const body = {};
+    if (type === 'username') {
+        body.user_name = value
+    }
+    else if (type === 'mobile') {
+        if (new RegExp('[0-9]{10}').test(value)) {
+            body.mobile = value;
+        }
+        else {
+            body.email = value
+        }
+    }
+    else {
+        console.log("Error!");
+        return;
+    }
+    return httpPost(SERVER + 'user/check', body).then(response => {
+        if (response && response.exists === true) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    });
 };

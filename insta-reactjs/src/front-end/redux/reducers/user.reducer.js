@@ -5,7 +5,8 @@ const INITIAL_STATE = {
         user_details: {},
         user_suggestions: [],
         isLoggedIn: false,
-        loginError: ''
+        loginError: '',
+        signupSuccess: false,
     }
 };
 
@@ -19,6 +20,8 @@ const userReducer = (state = INITIAL_STATE, action) => {
             return { ...state, user: { ...state.user, isLoggedIn: action.payload } };
         case userTypes.UPDATE_USER_LOGIN_ERROR:
             return { ...state, user: { ...state.user, loginError: action.payload } };
+        case userTypes.UPDATE_SIGNUP_SUCCESS:
+            return { ...state, user: { ...state.user, signupSuccess: action.payload } };
         default:
             return state;
     }
