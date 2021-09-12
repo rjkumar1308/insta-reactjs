@@ -18,7 +18,7 @@ export const PostComponent = ({ post }) => (
     <div className="post">
         <div className="post-header">
             <div className="post-header-left-content">
-                <div className="module-border-wrap">
+                <div className={"module-border-wrap" + (post.userHasStories ? '' : ' background-none')}>
                     <img src={post.avatar} alt="Profile" />
                 </div>
                 <span>{post.user_name}</span>
@@ -42,17 +42,19 @@ export const PostComponent = ({ post }) => (
                 </div>
             </div>
             <div className="no-of-likes">
-                <span>{post.no_of_likes} likes</span>
+                {post.no_of_likes > 0 ? (<span>{post.no_of_likes} likes</span>)
+                    :
+                    (<span className="font-weight-normal">Be the first to <strong>like this</strong></span>)}
             </div>
             <div className="caption">
-                <span><strong>{post.user_name}</strong>{post.caption}</span>
+                {post.caption.length > 0 && (<span><strong>{post.user_name} </strong>{post.caption}</span>)}
             </div>
             <div className="view-all-comments">
-                <span>View all {post.no_of_comments} comments</span>
+                {post.no_of_comments > 0 && (<span>View all {post.no_of_comments} comments</span>)}
             </div>
             <div className="top-comments">
                 {
-                    post.top_comments.map(comment => <span key={comment.user_name}><strong>{comment.user_name}</strong> {comment.comment}</span>)
+                    post.top_comments && post.top_comments.length > 0 && post.top_comments.map(comment => <span key={comment.user_name}><strong>{comment.user_name}</strong> {comment.comment}</span>)
                 }
             </div>
             <div className="post-time">
@@ -66,5 +68,5 @@ export const PostComponent = ({ post }) => (
                 <span>Post</span>
             </div>
         </div>
-    </div>
+    </div >
 );

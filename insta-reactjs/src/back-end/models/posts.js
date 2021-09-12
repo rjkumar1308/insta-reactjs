@@ -2,16 +2,11 @@ const mongoose = require('mongoose');
 
 const postsSchema = mongoose.Schema({
     _id: mongoose.Types.ObjectId,
-    avatar: String,
-    user_name: String,
+    owner: String,
     image: String,
-    no_of_likes: Number,
+    likes: Array,
     caption: String,
-    no_of_comments: Number,
-    top_comments: [{
-        user_name: String,
-        comment: String
-    }],
+    comments: Array,
     post_time: Number
 });
 

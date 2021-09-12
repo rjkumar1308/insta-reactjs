@@ -35,4 +35,11 @@ const formatUserDataForSignup = data => {
     return formattedData;
 };
 
-module.exports = { formatUserDataForSignup };
+const formatPosts = posts => {
+    posts.forEach(post => {
+        post.no_of_likes = post.likes.length;
+        post.no_of_comments = post.comments.length;
+    });
+}
+
+module.exports = { formatUserDataForSignup, formatPosts };

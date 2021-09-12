@@ -17,7 +17,10 @@ class PostsComponent extends React.Component {
         return (
             <div className="posts">
                 {
-                    posts.map(post => <PostComponent post={post} key={post._id} />)
+                    posts && posts.length > 0 ?
+                        posts.map(post => <PostComponent post={post} key={post._id} />)
+                        :
+                        (<div>Suggestions For You</div>)
                 }
             </div>
         )

@@ -10,6 +10,8 @@ const userSchema = mongoose.Schema({
     "role": String,
     "email": String,
     "mobile": String,
+    "followers": Array,
+    "following": Array
 });
 
 const suggerstionSchema = mongoose.Schema({

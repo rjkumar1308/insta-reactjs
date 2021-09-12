@@ -28,6 +28,9 @@
                     border: 2px solid white;
                 }
             }
+            .background-none{
+                background: none;
+            }
             span {
                 padding-left: 10px;
                 font-weight: bold;
@@ -79,6 +82,9 @@
                 font-size: 14px;
                 font-weight: bold;
                 background: inherit;
+            }
+            .font-weight-normal{
+                font-weight: normal;
             }
         }
         .caption {
