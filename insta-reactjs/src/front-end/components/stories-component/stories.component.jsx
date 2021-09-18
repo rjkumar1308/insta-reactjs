@@ -14,8 +14,9 @@ class StoriesComponent extends React.Component {
 
     render() {
         const { stories } = this.props;
+        console.log(stories.length)
         return (
-            <div className="stories-box">
+            <div className={"stories-box" + (stories.length ? '': ' no-stories')}>
                 {
                     stories && stories.length && stories.map(story => (
                         <StoryComponent story={story} key={story._id} />

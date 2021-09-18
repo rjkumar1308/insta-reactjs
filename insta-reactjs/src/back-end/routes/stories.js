@@ -12,7 +12,7 @@ router.get('/getStories', authenticateJwt, (req, res) => {
         }
         if (response.following && response.following.length === 0) {
             return res.send({
-                stories: []
+                stories: {}
             });
         }
         let promiseArray = [];
