@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { fetchPosts } from '../../redux/actions/posts.actions';
-import { PostComponent } from './post-component/post.component';
+import PostComponent from './post-component/post.component';
 
 import './posts.component.scss';
 
