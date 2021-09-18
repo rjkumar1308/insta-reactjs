@@ -1,10 +1,9 @@
 const router = require('express').Router();
-const mongoose = require('mongoose');
 const User = require('../models/user').User;
 const Suggestions = require('../models/user').Suggestions;
 const signJwtToken = require('../auth/auth').signJwtToken;
 const authenticateJwt = require('../auth/auth').authenticateJwt;
-const formatUserDataForSignup = require('../util/format.util').formatUserDataForSignup;
+const formatUserDataForSignup = require('../util/util').formatUserDataForSignup;
 
 router.get('/getUserDetails', authenticateJwt, (req, res) => {
     User.find({}, (error, user) => {

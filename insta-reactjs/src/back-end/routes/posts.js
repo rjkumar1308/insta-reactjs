@@ -2,7 +2,7 @@ const router = require('express').Router();
 const Posts = require('../models/posts');
 const User = require('../models/user').User;
 const authenticateJwt = require('../auth/auth').authenticateJwt;
-const formatPosts = require('../util/format.util').formatPosts;
+const formatPosts = require('../util/util').formatPosts;
 const returnError = require('../util/util').returnError;
 
 router.get('/getPosts', authenticateJwt, (req, res) => {

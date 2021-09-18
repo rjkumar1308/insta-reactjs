@@ -11,7 +11,11 @@ const userSchema = mongoose.Schema({
     "email": String,
     "mobile": String,
     "followers": Array,
-    "following": Array
+    "following": Array,
+    "stories":{
+        avatar: String,
+        upload_time:Date
+    }
 });
 
 const suggerstionSchema = mongoose.Schema({

@@ -85,6 +85,10 @@
             }
             .font-weight-normal{
                 font-weight: normal;
+                background: inherit;
+                strong {
+                    background: inherit;
+                }
             }
         }
         .caption {
